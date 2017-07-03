@@ -4,7 +4,7 @@
 - [CUDA 8.0](https://developer.nvidia.com/cuda-downloads)
 
 
-## 介绍
+## Introduce
 NVIDIA TensorRT2.1是一个C++庫，在NVIDIA GPU上能够實現高性能的推理（inference ）過程。TensorRT優化網路的方式有：對張量和層進行合併，轉換權重。
 
 編譯TensorRT 2.1 要求GCC >= 4.8
@@ -37,7 +37,7 @@ TensorRT 2.1 現在支持以下layer類型：
 **Note：** NvCaffeParser不支持Caffe prototxt中的舊格式 
 
 
-### Ubuntu 下安装方式
+### Install
 安装命令：
 
  1. CUDA 8.0 
