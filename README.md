@@ -25,7 +25,7 @@
     libnvinfer3 3.0.2-1+cuda8.0 amd64 TensorRT runtime libraries   tensorrt-2.1.2 3.0.2-1+cuda8.0 amd64 Meta package of         TensorRT
 
 
-  Run and Test TensorRT2.1
+  Run and Test TensorRT2.1：
 ```
 $ cd /usr/src/tensorrt/samples
 $ sudo make
