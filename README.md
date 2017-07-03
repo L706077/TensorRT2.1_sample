@@ -63,88 +63,15 @@ TensorRT 2.0非常大的改动点是支持INT8类型（TensorRT 1.0支持FP16）
     libnvinfer-dev 3.0.2-1+cuda8.0 amd64 TensorRT development libraries and headers
     libnvinfer3 3.0.2-1+cuda8.0 amd64 TensorRT runtime libraries   tensorrt-2.1.2 3.0.2-1+cuda8.0 amd64 Meta package of         TensorRT
 
- 5. 若安装成功，你应看到:
-  `tensorrt-2 2.0.0-1+cuda amd64 Meta package of TensorRT`
-同样，通过命令：
-  `dpkg -l | grep nvinfer2`
 
- 4. 你应看到:
-  `libnvinfer2 2.0.0-1+cuda amd64 TensorRT runtime libraries`
-
-注意：TensorRT 2.0现在只提供了Ubuntu 14.04和16.04两个版本。
-
-### Centos 7 下安装方式
-
-TensorRT对Ubuntu系统友好，如果是企业级系统（比如centos）可以下载下来解压然后手动安装。
-前提条件：建议Centos 7以上，即gcc 版本要大于4.8，因为TensorRT内使用了大量的c++ 11特性。如果你是大神可以在Centos 6上升级gcc 到4.8并把一些依赖问题搞定。
-安装步骤如下：
-
- 1. 下载deb安装包，然后解压，一路挑着大文件解压，找到两个头文件NvCaffeParser.h。NvInfer.h和对应的so文件，libnvcaffe_parser.so.2.0.0，libnvinfer.so.2.0.0。
- 2. 然后安装方式就跟cudnn一样了，*.h上传到CUDA_HOME/include下，lib文件上传到CUDA_HOME/lib64目录下（lib文件记得添加libnvinfer.so和libnvcaffe_parser.so的链接）
- 3. 安装完毕，如果要在Centos上跑samples，记得要修改一下Makefile
-
-## 快速开始
-使用TensorRT包括两部步骤（1）打开冰箱；（2）把大象装进去：
-
- - build阶段，TensorRT进行网络定义、执行优化并生成推理引擎
- - execution阶段，需要将input和output在GPU上开辟空间并将input传输到GPU上，调用推理接口得到output结果，再将结果拷贝回host端。
-
-build阶段比较耗时间，特别是在嵌入式平台上。所以典型的使用方式就是将build后的引擎序列化（序列化后可写到硬盘里）供以后使用。
-
-build阶段对网络进行了以下优化：
-
- - 去掉没有被使用过的输出层
- - 将convolution、bias和ReLU操作融合到一起
- - 将相似度比较高的参数和相同的Tensor进行聚合（例如，GoogleNet v5的初始模块中的1*1卷积）
- - 通过将层的输出直接导向其最终位置来简化串接的层
-
-此外，TensorRT在虚拟数据（Dummy Data）上运行层，以在kernel仓库中筛选出运行最快的，并在适当的时候执行权重预格式化和内存优化。
-
-### 网络定义
-网络定义是由Layers和Tensors组成的。
-
-每一层都一组输入tensor和一组输出tensor，根据层类型和输入tensor来计算输出tensor。不同类型的层具有不同的参数，比如卷积size和stride，以及卷积滤波器权值。
-
-tensor是网络的输入或者输出。tensor的数据目前支持16bit和32bit浮点数和三维（通道，宽，高）。输入tensor的数据大小由程序猿指定，输出tensor的大小自动就算出来了。
-
-每一层和tensor都有一个名字，在分析或者读构建日志时非常有用。
-
-当使用caffe parser时，tensor和层的名字直接从caffe prototxt读取。
-
-## SampleMNIST：简单使用方法
-
-## SampleGoogleNet:性能分析与16-bit推断
-### 性能分析
-### half2模式
-
-## SampleINT8：8-bit校准与推断
-
-## giexec：一个命令行包装器
-在示例程序的文件夹中包含有一个TensorRT的命令行包装，它在基于任意数据对网络做benchmark，以及从这些模型生成序列化引擎很有用。命令行参数如下：
-```bash
-Mandatory params:
-  --deploy=<file>      Caffe deploy file
-  --output=<name>      Output blob name (can be specified multiple times)
-
-Optional params:
-  --model=<file>       Caffe model file (default = no model, random weights used)
-  --batch=N            Set batch size (default = 1)
-  --device=N           Set cuda device to N (default = 0)
-  --iterations=N       Run N iterations (default = 10)
-  --avgRuns=N          Set avgRuns to N - perf is measured as an average of avgRuns (default=10)
-  --workspace=N        Set workspace size in megabytes (default = 16)
-  --half2              Run in paired fp16 mode (default = false)
-  --int8               Run in int8 mode (default = false)
-  --verbose            Use verbose logging (default = false)
-  --hostTime           Measure host time rather than GPU time (default = false)
-  --engine=<file>      Generate a serialized GIE engine
-  --calib=<file>       Read INT8 calibration cache file
+ 5. Run and Test TensorRT2.1
 ```
-例如：
-```bash
-giexec --deploy=mnist.prototxt --model=mnist.caffemodel --output=prob
+$ cd /usr/src/tensorrt/samples
+$ sudo make
+$  cd ../bin/
+$ giexec --deploy=mnist.prototxt --model=mnist.caffemodel --output=prob
 ```
-如果没有提供“--model”，则权重将被随机生成
+如果無提供“--model”，则全重將會隨機生成
 
 该样例没有展示任何前述未曾包含的TensorRT特性
 
