@@ -1,7 +1,7 @@
 
-## Download TensorRT2.1
+## Download
 - [TensorRT2.1](https://developer.nvidia.com/nvidia-tensorrt-download) 
-
+- [CUDA 8.0](https://developer.nvidia.com/cuda-downloads)
 
 
 ## 介绍
@@ -35,14 +35,8 @@ TensorRT 2.1 現在支持以下layer類型：
 - ElementWise (Eltwise) with more than two inputs
 
 **Note：** NvCaffeParser不支持Caffe prototxt中的舊格式 
-引號。
 
-## 快速开始指南
 
-TensorRT原名GIE。GIE又名TensorRT 1.0，TensorRT 2.0正式改名。
-TensorRT 2.0非常大的改动点是支持INT8类型（TensorRT 1.0支持FP16）。
-使用TensorRT 2.0的硬件要求：Tesla P4, Tesla P40, GeForce TitanX Pascal, GeForce GTX 1080, DRIVE PX 2 dGPU
-软件要求：CUDA 8.0
 ### Ubuntu 下安装方式
 安装命令：
 
