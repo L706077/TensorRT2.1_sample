@@ -43,13 +43,13 @@ NVIDIA TensorRT2.1是一个C++庫，在NVIDIA GPU上能够實現高性能的推�
 TensorRT 2.1 現在支持以下layer類型：
 
  - **Activation**: 激活層，The Activation layer implements per-element activation functions. Supported activation types are ReLU, TanH and Sigmoid
- - **Convolution**:捲積層，The Convolution layer computes a 3D (channel, height, width) convolution, with or without bias.
+ - **Convolution**: 捲積層，The Convolution layer computes a 3D (channel, height, width) convolution, with or without bias.
  - **Concatenation**: 聯集層，The concatenation layer links together multiple tensors of the same height and width across the channel dimension
  - **Deconvolution**： 反捲積層，The Deconvolution layer implements a deconvolution, with or without bias.     
  - **ElementWise**: The ElementWise, also known as Eltwise, layer implements per-element operations. Supported operations are sum, product, and maximum
- - **Fully-connected**：全連接層，The FullyConnected layer implements a matrix-vector product, with or without bias
- - **LRN**:The LRN layer implements cross-channel Local Response Normalization
- - **Plugin**:The Plugin Layer allows you to integrate layer implementations that TensorRT does not natively support
+ - **Fully-connected**: 全連接層，The FullyConnected layer implements a matrix-vector product, with or without bias
+ - **LRN**: The LRN layer implements cross-channel Local Response Normalization
+ - **Plugin**: The Plugin Layer allows you to integrate layer implementations that TensorRT does not natively support
  - **Pooling**: 池化層，The Pooling layer implements pooling within a channel. Supported pooling types are maximum and average
  - **RNN**： 循環網路層，The RNN layer implements recurrent layers. Supported types are simple RNN, GRU,and LSTM.
  - **Scale**: The Scale layer implements a per-tensor, per channel or per-weight affine transformation and/or exponentiation by constant values
