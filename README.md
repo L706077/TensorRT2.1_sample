@@ -11,11 +11,11 @@
  3. Download TensorRT2.1 .deb package
  
  ### Getting Started：
- `` bash
+ ```bash
  $ sudo dpkg -i nv-gie-repo-ubuntu1604-cuda8.0-trt2.1-20170614_1-1_amd64.deb
  $ sudo apt-get update
  $ sudo apt-get install tensorrt-2.1.2
-``
+```
  4. Verify your installation:
   ```bash
   dpkg -l | grep TensorRT
