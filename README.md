@@ -16,7 +16,7 @@
  $ sudo apt-get update
  $ sudo apt-get install tensorrt-2.1.2
 ```
- 4. Verify your installation:
+  Verify your installation:
   ```bash
   dpkg -l | grep TensorRT
   ```
@@ -25,7 +25,7 @@
     libnvinfer3 3.0.2-1+cuda8.0 amd64 TensorRT runtime libraries   tensorrt-2.1.2 3.0.2-1+cuda8.0 amd64 Meta package of         TensorRT
 
 
- 5. Run and Test TensorRT2.1
+  Run and Test TensorRT2.1
 ```
 $ cd /usr/src/tensorrt/samples
 $ sudo make
