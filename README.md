@@ -68,43 +68,15 @@ TensorRT 2.0非常大的改动点是支持INT8类型（TensorRT 1.0支持FP16）
 ```
 $ cd /usr/src/tensorrt/samples
 $ sudo make
-$  cd ../bin/
+$ cd ../bin/
 $ giexec --deploy=mnist.prototxt --model=mnist.caffemodel --output=prob
 ```
 如果無提供“--model”，则全重將會隨機生成
 
-该样例没有展示任何前述未曾包含的TensorRT特性
 
-## 在多GPU上使用TensorRT
-每个`ICudaEngine`对象在通过builder或反序列化而实例化时均被builder限制于一个指定的GPU内。要进行GPU的选择，需要在进行反序列化或调用builder之前调用`cudaSetDeviec()`。每个`IExecutionContext`都被限制在产生它的引擎所在的GPU内，当调用`execute()`或`enqueue()`时，请在必要时调用`cudaSetDevice()`以保证线程与正确的设备绑定。
+## 數據格式
+TensorRT2.1的輸入輸出張量均以NCHW形式儲存的32-bit張量。NCHW指張量的维度順序為batch维（N）-通道维（C）-高度（H）-寬度（W）
 
-## 数据格式
-TensorRT的输入输出张量均为以NCHW形式存储的32-bit张量。NCHW指张量的维度顺序为batch维（N）-通道维（C）-高度（H）-宽度（W）
 
-对权重而言：
 
-- 卷积核存储为KCRS形式，其中K轴为卷积核数目的维度，即卷积层输出通道维。C轴为是输入张量的通道维。R和S分别是卷积核的高和宽
-- 全连接层按照行主序形式存储  <font color="red">这里是错的！！全连接层中weights的存储方式是col-major，详见[Bugs](https://github.com/LitLeo/TensorRT_Tutorial/blob/master/Bug.md)</font>
-- 反卷积层按照CKRS形式存储，各维含义同上
-
-## FAQ
-**Q：如何在TensorRT中使用自定义层？**
-A：当前版本的TensorRT不支持自定义层。要想在TensorRT中使用自定义层，可以创建两个TensorRT工作流，自定义层夹在中间执行。比如：
-
-``` c++
-IExecutionContext *contextA = engineA->createExecutionContext();
-IExecutionContext *contextB = engineB->createExecutionContext();
-
-<...>
-
-contextA.enqueue(batchSize, buffersA, stream, nullptr);
-myLayer(outputFromA, inputToB, stream);
-contextB.enqueue(batchSize, buffersB, stream, nullptr);
-```
-
-**Q：如何构造对若干不同可能的batch size优化了的引擎？**
-A：尽管TensorRT允许在给定的一个batch size下优化模型，并在运行时送入任何小于该batch size的数据，但模型在更小size的数据上的性能可能没有被很好的优化。为了面对不同batch大小优化模型，你应该对每种batch size都运行一下builder和序列化。未来的TensorRT可能能基于单一引擎对多种batch size进行优化，并允许在当不同batch size下层使用相同的权重形式时，共享层的权重。
-
-**Q：如何选择最佳的工作空间大小**:
-A: 一些TensorRT算法需要GPU上额外的工作空间。方法`IBuilder::setMaxWorkspaceSize()`控制了能够分配的工作空间的最大值，并阻止builder考察那些需要更多空间的算法。在运行时，当创造一个`IExecutionContext`时，空间将被自动分配。分配的空间将不多于所需求的空间，即使在`IBuilder::setMaxWorspaceSize()`中设置的空间还有很多。应用程序因此应该允许TensorRT builder使用尽可能多的空间。在运行时，TensorRT分配的空间不会超过此数，通常而言要少得多。
 
