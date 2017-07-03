@@ -2,7 +2,7 @@
 ## Download
 - [TensorRT2.1](https://developer.nvidia.com/nvidia-tensorrt-download) 
 - [CUDA 8.0](https://developer.nvidia.com/cuda-downloads)
-
+- [OpenCV2.4.13](https://github.com/L706077/Install-opencv-2.4.13-in-Ubuntu-16.04-/blob/master/install-opencv-2.4.13-in-ubuntu.sh)
 
 ## Install
 ### Requirements:
