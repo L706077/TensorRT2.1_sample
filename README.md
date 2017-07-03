@@ -5,7 +5,7 @@
 
 
 ## 介绍
-NVIDIA TensorRT是一个C++庫，在NVIDIA GPU上能够實現高性能的推理（inference ）過程。TensorRT優化網路的方式有：對張量和層進行合併，轉換權重。
+NVIDIA TensorRT2.1是一个C++庫，在NVIDIA GPU上能够實現高性能的推理（inference ）過程。TensorRT優化網路的方式有：對張量和層進行合併，轉換權重。
 
 編譯TensorRT 2.1 要求GCC >= 4.8
 
@@ -38,7 +38,6 @@ TensorRT 2.1 現在支持以下layer類型：
 引號。
 
 ## 快速开始指南
-【注】本部分由[TensorRT下载页面][1]翻译而来。
 
 TensorRT原名GIE。GIE又名TensorRT 1.0，TensorRT 2.0正式改名。
 TensorRT 2.0非常大的改动点是支持INT8类型（TensorRT 1.0支持FP16）。
@@ -47,10 +46,10 @@ TensorRT 2.0非常大的改动点是支持INT8类型（TensorRT 1.0支持FP16）
 ### Ubuntu 下安装方式
 安装命令：
 
- 1. 验证你是否安装了CUDA 8.0 .
- 2. 下载TensorRT的deb包
- 3. 从TensrRT的deb包安装，命令为：
-
+ 1. CUDA 8.0 
+ 2. Ubuntu 16.04
+ 3. Download TensorRT2.1 .deb package
+ 4. Install TensrRT2.1 .deb command line：
  ``
     sudo dpkg -i nv-tensorrt-repo-ubuntu1404-7-ea-cuda8.0_2.0.1-1_amd64.deb
     sudo apt-get update
