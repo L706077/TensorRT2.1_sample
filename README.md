@@ -4,6 +4,36 @@
 - [CUDA 8.0](https://developer.nvidia.com/cuda-downloads)
 
 
+### Install
+
+ 1. CUDA 8.0 
+ 2. Ubuntu 16.04
+ 3. Download TensorRT2.1 .deb package
+ 4. Install TensrRT2.1 .deb command line：
+ ``
+    sudo dpkg -i nv-gie-repo-ubuntu1604-cuda8.0-trt2.1-20170614_1-1_amd64.deb
+    sudo apt-get update
+    sudo apt-get install tensorrt-2.1.2
+``
+ 4. Verify your installation:
+  ```bash
+  dpkg -l | grep TensorRT
+  ```
+    you should see:
+    libnvinfer-dev 3.0.2-1+cuda8.0 amd64 TensorRT development libraries and headers
+    libnvinfer3 3.0.2-1+cuda8.0 amd64 TensorRT runtime libraries   tensorrt-2.1.2 3.0.2-1+cuda8.0 amd64 Meta package of         TensorRT
+
+
+ 5. Run and Test TensorRT2.1
+```
+$ cd /usr/src/tensorrt/samples
+$ sudo make
+$ cd ../bin/
+$ giexec --deploy=mnist.prototxt --model=mnist.caffemodel --output=prob
+```
+如果無提供“--model”，则全重將會隨機生成
+
+
 ## Introduce
 NVIDIA TensorRT2.1是一个C++庫，在NVIDIA GPU上能够實現高性能的推理（inference ）過程。TensorRT優化網路的方式有：對張量和層進行合併，轉換權重。
 
@@ -36,39 +66,7 @@ TensorRT 2.1 現在支持以下layer類型：
 
 **Note：** NvCaffeParser不支持Caffe prototxt中的舊格式 
 
-
-### Install
-安装命令：
-
- 1. CUDA 8.0 
- 2. Ubuntu 16.04
- 3. Download TensorRT2.1 .deb package
- 4. Install TensrRT2.1 .deb command line：
- ``
-    sudo dpkg -i nv-gie-repo-ubuntu1604-cuda8.0-trt2.1-20170614_1-1_amd64.deb
-    sudo apt-get update
-    sudo apt-get install tensorrt-2.1.2
-``
- 4. Verify your installation:
-  ```bash
-  dpkg -l | grep TensorRT
-  ```
-    you should see:
-    libnvinfer-dev 3.0.2-1+cuda8.0 amd64 TensorRT development libraries and headers
-    libnvinfer3 3.0.2-1+cuda8.0 amd64 TensorRT runtime libraries   tensorrt-2.1.2 3.0.2-1+cuda8.0 amd64 Meta package of         TensorRT
-
-
- 5. Run and Test TensorRT2.1
-```
-$ cd /usr/src/tensorrt/samples
-$ sudo make
-$ cd ../bin/
-$ giexec --deploy=mnist.prototxt --model=mnist.caffemodel --output=prob
-```
-如果無提供“--model”，则全重將會隨機生成
-
-
-## 數據格式
+## Data Format
 TensorRT2.1的輸入輸出張量均以NCHW形式儲存的32-bit張量。NCHW指張量的维度順序為batch维（N）-通道维（C）-高度（H）-寬度（W）
 
 
