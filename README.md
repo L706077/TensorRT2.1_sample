@@ -67,8 +67,7 @@ TensorRT 2.1 現在支持以下layer類型：
 
 **Note：** NvCaffeParser不支持Caffe prototxt中的舊格式 
 
-
-## Data Format
+### Data Format
 TensorRT2.1的輸入輸出張量均以NCHW形式儲存的32-bit張量。NCHW指張量的维度順序為batch维（N）-通道维（C）-高度（H）-寬度（W）
 
 
