@@ -11,16 +11,22 @@ NVIDIA TensorRT是一个C++庫，在NVIDIA GPU上能够實現高性能的推理�
 
 TensorRT 2.1 現在支持以下layer類型：
 
- - **Convolution**：捲積層，可無bias。支持3D捲積（channel,height,width）。**Note：**该卷积层的操作实际计算的是“相关”而不是“卷积”（严格的卷积定义需要卷积核反转），如果你想通过TensorRT的API而不是通过caffe parser library导入权重，这是一个需要注意的地方。
- - **Activation**: 激活层，支持ReLU, tanh和sigmoid.
- - **Pooling**: 池化层，支持最大值池化和均值池化
- - **Scale**: 可以使用常量对每一个张量, 通道或权重进行仿射变换和取幂操作。**BatchNormalization**可由该层实现。
- - **ElementWise**: 两个张量按元素求和、求乘积或取最大
- - **LRN**: 局部响应归一化层，仅支持通道间归一化
- - **Fully-connected**：全连接层，可无bias
- - **SoftMax**: Softmax层，仅支持通道间计算softmax
- - **Deconvolution**： 反卷积层，可无bias
- - **RNN**： 循环网络层，支持GRU和LSTM
+ - **Activation**: 激活層，The Activation layer implements per-element activation functions. Supported activation types are ReLU, TanH   
+                   and Sigmoid
+ - **Convolution**:捲積層，The Convolution layer computes a 3D (channel, height, width) convolution, with or without bias.
+ - **Concatenation**: 聯集層，The concatenation layer links together multiple tensors of the same height and width across the channel  
+                      dimension
+ - **Deconvolution**： 反捲積層，The Deconvolution layer implements a deconvolution, with or without bias.     
+ - **ElementWise**: The ElementWise, also known as Eltwise, layer implements per-element operations. Supported operations are sum,  
+                    product, and maximum
+ - **Fully-connected**：全連接層，The FullyConnected layer implements a matrix-vector product, with or without bias
+ - **LRN**:The LRN layer implements cross-channel Local Response Normalization
+ - **Plugin**:The Plugin Layer allows you to integrate layer implementations that TensorRT does not natively support
+ - **Pooling**: 池化層，The Pooling layer implements pooling within a channel. Supported pooling types are maximum and average
+ - **RNN**： 循環網路層，The RNN layer implements recurrent layers. Supported types are simple RNN, GRU,and LSTM.
+ - **Scale**: The Scale layer implements a per-tensor, per channel or per-weight affine transformation and/or exponentiation by constant               values
+ - **SoftMax**: Softmax層，The SoftMax layer implements a cross-channel SoftMax.
+
 
 TensorRT是一个独立的深度学习部署框架，对caffe尤其友好。TensorRT提供了一个针对caffe的模型解析器NvCaffeParser，可以通过几行代码解析caffe生成的model并定义网络。NvCaffeParer使用上面定义的层来实现Caffe中的Convolution, ReLU, Sigmoid, TanH, Pooling, Power, BatchNorm, Eltwise, LRN, InnerProduct, SoftMax, Scale, 和Deconvolution。而目前，NvCaffeParse不支持下面的Caffe层：
 
