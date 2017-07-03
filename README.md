@@ -32,7 +32,7 @@ $ sudo make
 $ cd ../bin/
 $ giexec --deploy=mnist.prototxt --model=mnist.caffemodel --output=prob
 ```
-如果無提供“--model”，则全重將會隨機生成
+如果無提供“--model”，則權重將會隨機生成
 
 
 ## Introduce
