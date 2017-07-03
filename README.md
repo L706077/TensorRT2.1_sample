@@ -61,7 +61,7 @@ TensorRT 2.0非常大的改动点是支持INT8类型（TensorRT 1.0支持FP16）
   ```
     you should see:
     libnvinfer-dev 3.0.2-1+cuda8.0 amd64 TensorRT development libraries and headers
-    libnvinfer3 3.0.2-1+cuda8.0 amd64 TensorRT runtime libraries   tensorrt-2.1.2 3.0.2-1+cuda8.0 amd64 Meta package of TensorRT
+    libnvinfer3 3.0.2-1+cuda8.0 amd64 TensorRT runtime libraries   tensorrt-2.1.2 3.0.2-1+cuda8.0 amd64 Meta package of         TensorRT
 
  5. 若安装成功，你应看到:
   `tensorrt-2 2.0.0-1+cuda amd64 Meta package of TensorRT`
