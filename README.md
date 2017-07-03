@@ -5,11 +5,11 @@
 
 
 ## 介绍
-NVIDIA TensorRT是一个C++，在NVIDIA GPU上能够实现高性能的推理（inference ）过程。TensorRT优化网络的方式有：对张量和层进行合并，转换权重，选择高效的中间数据格式，以及依据层的参数和实测性能，从一个丰富的核仓库中进行筛选。
+NVIDIA TensorRT是一个C++庫，在NVIDIA GPU上能够實現高性能的推理（inference ）過程。TensorRT優化網路的方式有：對張量和層進行合併，轉換權重。
 
-编译TensorRT 2.0 要求GCC >= 4.8
+編譯TensorRT 2.1 要求GCC >= 4.8
 
-TensorRT 2.0 现在支持以下layer类型：
+TensorRT 2.1 現在支持以下layer類型：
 
  - **Convolution**：卷积层，可无bias。目前仅支持2D卷积（即对4D的输入进行卷积并输出4D输出）。**Note：**该卷积层的操作实际计算的是“相关”而不是“卷积”（严格的卷积定义需要卷积核反转），如果你想通过TensorRT的API而不是通过caffe parser library导入权重，这是一个需要注意的地方。
  - **Activation**: 激活层，支持ReLU, tanh和sigmoid.
