@@ -5,11 +5,12 @@
 
 
 ## Install
-
+### Requirements
  1. CUDA 8.0 
  2. Ubuntu 16.04
  3. Download TensorRT2.1 .deb package
- 4. Install TensrRT2.1 .deb command line：
+ 
+ ### Getting Started：
  ``
     sudo dpkg -i nv-gie-repo-ubuntu1604-cuda8.0-trt2.1-20170614_1-1_amd64.deb
     sudo apt-get update
