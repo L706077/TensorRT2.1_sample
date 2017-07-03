@@ -25,16 +25,17 @@ TensorRT 2.1 現在支持以下layer類型：
  - **SoftMax**: Softmax層，The SoftMax layer implements a cross-channel SoftMax.
 
 
-TensorRT是一个独立的深度学习部署框架，对caffe尤其友好。TensorRT提供了一个针对caffe的模型解析器NvCaffeParser，可以通过几行代码解析caffe生成的model并定义网络。NvCaffeParer使用上面定义的层来实现Caffe中的Convolution, ReLU, Sigmoid, TanH, Pooling, Power, BatchNorm, Eltwise, LRN, InnerProduct, SoftMax, Scale, 和Deconvolution。而目前，NvCaffeParse不支持下面的Caffe层：
+雖然TensorRT獨立於任何框架，但該package確實包含一個名為NvCaffeParser的Caffe模型的解析器。 NvCaffeParser提供了一種導入網絡定義的簡單機制。 NvCaffeParser使用TensorRT的層來實現Caffe的Convolution,，ReLU，Sigmoid，TanH，Pooling，Power，BatchNorm，ElementWise（Eltwise），LRN，InnerProduct（在Caffe稱為FullyConnected層），SoftMax，Scale和Deconvolution層。而目前，NvCaffeParse不支持下面的Caffe層：
 
 - Deconvolution groups
 - Dilated convolutions
 - PReLU
 - Leaky ReLU
-- 除通道间scale的其他Scale层
-- 含有两个以上输入的ElementWise操作
+- Scale, other than per-channel scaling
+- ElementWise (Eltwise) with more than two inputs
 
-**Note：** TensorRT不支持caffe的旧prototxt格式，特别地，prototxt中定义的层类型应当为由双引号分割的字符串。
+**Note：** NvCaffeParser不支持Caffe prototxt中的舊格式 
+引號。
 
 ## 快速开始指南
 【注】本部分由[TensorRT下载页面][1]翻译而来。
