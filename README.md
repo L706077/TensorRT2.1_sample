@@ -12,7 +12,7 @@ NVIDIA TensorRT是一个C++庫，在NVIDIA GPU上能够實現高性能的推理�
 TensorRT 2.1 現在支持以下layer類型：
 
  - **Activation**: 激活層，The Activation layer implements per-element activation functions. Supported activation types are ReLU, TanH   
-                   and Sigmoid
+           and Sigmoid
  - **Convolution**:捲積層，The Convolution layer computes a 3D (channel, height, width) convolution, with or without bias.
  - **Concatenation**: 聯集層，The concatenation layer links together multiple tensors of the same height and width across the channel  
                       dimension
