@@ -9,6 +9,7 @@
  1. CUDA 8.0 
  2. Ubuntu 16.04
  3. Download TensorRT2.1 .deb package
+ 4. X86-64 System
  
  ### Getting Started：
  ```bash
