@@ -11,7 +11,7 @@ NVIDIA TensorRT是一个C++庫，在NVIDIA GPU上能够實現高性能的推理�
 
 TensorRT 2.1 現在支持以下layer類型：
 
- - **Convolution**：卷积层，可无bias。目前仅支持2D卷积（即对4D的输入进行卷积并输出4D输出）。**Note：**该卷积层的操作实际计算的是“相关”而不是“卷积”（严格的卷积定义需要卷积核反转），如果你想通过TensorRT的API而不是通过caffe parser library导入权重，这是一个需要注意的地方。
+ - **Convolution**：捲積層，可無bias。支持3D捲積（channel,height,width）。**Note：**该卷积层的操作实际计算的是“相关”而不是“卷积”（严格的卷积定义需要卷积核反转），如果你想通过TensorRT的API而不是通过caffe parser library导入权重，这是一个需要注意的地方。
  - **Activation**: 激活层，支持ReLU, tanh和sigmoid.
  - **Pooling**: 池化层，支持最大值池化和均值池化
  - **Scale**: 可以使用常量对每一个张量, 通道或权重进行仿射变换和取幂操作。**BatchNormalization**可由该层实现。
