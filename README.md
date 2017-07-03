@@ -4,7 +4,7 @@
 - [CUDA 8.0](https://developer.nvidia.com/cuda-downloads)
 
 
-### Install
+## Install
 
  1. CUDA 8.0 
  2. Ubuntu 16.04
@@ -43,9 +43,9 @@ TensorRT 2.1 現在支持以下layer類型：
 
  - **Activation**: 激活層，The Activation layer implements per-element activation functions. Supported activation types are ReLU, TanH and Sigmoid
  - **Convolution**:捲積層，The Convolution layer computes a 3D (channel, height, width) convolution, with or without bias.
- - **Concatenation**: 聯集層，The concatenation layer links together multiple tensors of the same height and width across the channel  dimension
+ - **Concatenation**: 聯集層，The concatenation layer links together multiple tensors of the same height and width across the channel dimension
  - **Deconvolution**： 反捲積層，The Deconvolution layer implements a deconvolution, with or without bias.     
- - **ElementWise**: The ElementWise, also known as Eltwise, layer implements per-element operations. Supported operations are sum,    product, and maximum
+ - **ElementWise**: The ElementWise, also known as Eltwise, layer implements per-element operations. Supported operations are sum, product, and maximum
  - **Fully-connected**：全連接層，The FullyConnected layer implements a matrix-vector product, with or without bias
  - **LRN**:The LRN layer implements cross-channel Local Response Normalization
  - **Plugin**:The Plugin Layer allows you to integrate layer implementations that TensorRT does not natively support
@@ -65,6 +65,7 @@ TensorRT 2.1 現在支持以下layer類型：
 - ElementWise (Eltwise) with more than two inputs
 
 **Note：** NvCaffeParser不支持Caffe prototxt中的舊格式 
+
 
 ## Data Format
 TensorRT2.1的輸入輸出張量均以NCHW形式儲存的32-bit張量。NCHW指張量的维度順序為batch维（N）-通道维（C）-高度（H）-寬度（W）
