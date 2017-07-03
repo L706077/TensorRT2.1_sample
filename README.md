@@ -51,14 +51,17 @@ TensorRT 2.0非常大的改动点是支持INT8类型（TensorRT 1.0支持FP16）
  3. Download TensorRT2.1 .deb package
  4. Install TensrRT2.1 .deb command line：
  ``
-    sudo dpkg -i nv-tensorrt-repo-ubuntu1404-7-ea-cuda8.0_2.0.1-1_amd64.deb
+    sudo dpkg -i nv-gie-repo-ubuntu1604-cuda8.0-trt2.1-20170614_1-1_amd64.deb
     sudo apt-get update
-    sudo apt-get install tensorrt-2
+    sudo apt-get install tensorrt-2.1.2
 ``
- 4. 验证安装:
+ 4. Verify your installation:
   ```bash
-  dpkg -l | grep tensorrt-2
+  dpkg -l | grep TensorRT
   ```
+    you should see:
+    libnvinfer-dev 3.0.2-1+cuda8.0 amd64 TensorRT development libraries and headers
+    libnvinfer3 3.0.2-1+cuda8.0 amd64 TensorRT runtime libraries   tensorrt-2.1.2 3.0.2-1+cuda8.0 amd64 Meta package of TensorRT
 
  5. 若安装成功，你应看到:
   `tensorrt-2 2.0.0-1+cuda amd64 Meta package of TensorRT`
